@@ -1,0 +1,16 @@
+@media (min-width: 768px) {
+    nav {
+        display: flex !important;
+        flex-direction: row;
+        gap: 1rem;
+        margin-top: 0;
+    }
+
+    #menuButton {
+        display: none;
+    }
+
+    .temple-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}

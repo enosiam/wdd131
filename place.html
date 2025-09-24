@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nigeria Landscapes</title>
+    <meta name="description" content="Explore Nigeria's diverse landscapes, culture, and natural wonders.">
+    <link rel="stylesheet" href="styles/place.css" />
+    <script src="scripts/place.js" defer></script>
+    <script src="scripts/weather.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="country-page-header">
+        <h1>Naija Landscapes</h1>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#weather">Weather</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <picture>
+                <source srcset="webp/images3.webp" media="(max-width: 300px)">
+                <source srcset="webp/images2.webp" media="(max-width: 1023px)">
+                <img src="webp/image1.webp" alt="Scenic view of Lagos, Nigeria" width="1200" height="600">
+            </picture>
+            <div class="hero-caption">Discover the Wonders of Nigeria</div>
+        </section>
+
+        <!-- About / Data Section -->
+        <section id="about" class="data">
+            <h2>About Nigeria</h2>
+            <ul>
+                <li><strong>Capital:</strong> Abuja</li>
+                <li><strong>Population:</strong> 223 million</li>
+                <li><strong>Area:</strong> 923,768 km²</li>
+                <li><strong>Official Language:</strong> English</li>
+                <li><strong>Currency:</strong> Naira (₦)</li>
+            </ul>
+        </section>
+
+        <!-- Gallery -->
+        <section id="gallery" class="gallery">
+            <h2>Gallery</h2>
+            <ul>
+                <li>
+                    <img src="images/images3.jpeg" alt="Zuma Rock, Abuja" loading="lazy">
+                    <p>image1</p>
+                </li>
+                <li>
+                    <img src="images/images2.jpeg" alt="Olumo Rock, Abeokuta" loading="lazy">
+                    <p>image2</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Weather -->
+        <section id="weather" class="weather">
+            <h2>Weather</h2>
+            <!-- Mobile: SVG icon (hidden in wide view) -->
+            <img class="mobile-icon" src="icons/weather-cloudy.svg" alt="Cloudy icon" width="48" height="48">
+            <div class="weather-details">
+                <p class="temp">Temperature: <span id="temp">28</span>°C</p>
+                <p class="wind">Wind Speed: <span id="wind">12</span> km/h</p>
+                <p class="windchill">Wind Chill: <span id="windchill">--</span></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; <span id="year">2025</span> Emmanuel — Last Modified: <span id="lastmodified"></span></p>
+    </footer>
+</body>
+
+</html>
+

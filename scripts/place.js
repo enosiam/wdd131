@@ -1,5 +1,3 @@
-// place.js
-
 // Insert current year
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -8,11 +6,9 @@ document.getElementById("lastmodified").textContent = document.lastModified;
 
 // Wind chill calculation
 function calculateWindChill(tempC, windKmh) {
-    // Convert wind speed to m/s
     let windMs = windKmh / 3.6;
 
     if (tempC <= 10 && windKmh > 4.8) {
-        // Wind chill formula (Celsius version)
         return (
             13.12 +
             0.6215 * tempC -
@@ -24,7 +20,6 @@ function calculateWindChill(tempC, windKmh) {
     }
 }
 
-// Grab elements
 const tempEl = document.getElementById("temp");
 const windEl = document.getElementById("wind");
 const windChillEl = document.getElementById("windchill");
@@ -32,5 +27,12 @@ const windChillEl = document.getElementById("windchill");
 let temp = parseFloat(tempEl.textContent);
 let wind = parseFloat(windEl.textContent);
 
-// Update wind chill display
 windChillEl.textContent = calculateWindChill(temp, wind);
+
+// ✅ Hamburger toggle
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".main-nav ul");
+
+hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+});

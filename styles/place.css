@@ -15,7 +15,6 @@ body {
 /* Header */
 .country-page-header {
     background: #006400;
-    /* dark green */
     color: white;
     padding: 1rem;
     display: flex;
@@ -26,6 +25,10 @@ body {
 .country-page-header h1 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
+}
+
+.main-nav {
+    position: relative;
 }
 
 .main-nav ul {
@@ -43,7 +46,38 @@ body {
 
 .main-nav a:hover {
     color: #ffd700;
-    /* gold on hover */
+}
+
+/* ✅ Hamburger (hidden on desktop) */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* ✅ Mobile menu */
+@media (max-width: 768px) {
+    .main-nav ul {
+        display: none;
+        flex-direction: column;
+        background: #006400;
+        padding: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+    }
+
+    .main-nav ul.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
 }
 
 /* Hero Section */
@@ -155,7 +189,6 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Pseudo-element example for wide view */
 @media (min-width: 768px) {
     .mobile-icon {
         display: none;
@@ -163,7 +196,6 @@ body {
 
     .weather h2::after {
         content: " ☁️";
-        /* Adds emoticon after heading */
         font-size: 1.2rem;
         margin-left: 8px;
     }

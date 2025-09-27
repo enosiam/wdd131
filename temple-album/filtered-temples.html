@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple Album</title>
+
+    <!-- SEO Meta Description -->
+    <meta name="description"
+        content="An enhanced album of temples with filters for old, new, large, and small temples. Built dynamically with JavaScript.">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="filtered-temple.css">
+    <link rel="stylesheet" href="filtered-temple-large.css">
+
+    <!-- JavaScript -->
+    <script src="filtered-temples.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Temple Album</h1>
+        <button id="menuButton" aria-label="Toggle Menu">&#9776;</button>
+        <nav id="navMenu">
+            <a href="#" id="home">Home</a>
+            <a href="#" id="old">Old</a>
+            <a href="#" id="new">New</a>
+            <a href="#" id="large">Large</a>
+            <a href="#" id="small">Small</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Temple Collection</h1>
+        <section id="templeCards" class="temple-grid">
+            <!-- Temple cards will be injected here dynamically -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> | Emmanuel Effiong</p>
+        <p>Last modified: <span id="lastModified"></span></p>
+    </footer>
+</body>
+
+</html>

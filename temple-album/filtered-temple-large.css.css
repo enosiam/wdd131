@@ -1,0 +1,52 @@
+/* filtered-temple-large.css */
+
+/* Apply only on wider screens */
+@media (min-width: 768px) {
+
+    /* Header */
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    nav a {
+        font-size: 1rem;
+        padding: 0.7rem 1.2rem;
+    }
+
+    /* Main heading */
+    main h1 {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    /* Grid layout with bigger spacing */
+    .temple-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+
+    /* Temple card */
+    .temple-card {
+        padding: 1.5rem;
+        border-radius: 10px;
+    }
+
+    .temple-card h2 {
+        font-size: 1.6rem;
+    }
+
+    .temple-card p {
+        font-size: 1rem;
+    }
+
+    .temple-card img {
+        margin-top: 1rem;
+        border-radius: 8px;
+    }
+
+    /* Footer */
+    footer {
+        font-size: 1rem;
+        padding: 1.5rem;
+    }
+}

@@ -1,0 +1,124 @@
+/* filtered-temple.css */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #4a148c;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background: #6a1b9a;
+    border-radius: 5px;
+}
+
+/* Main */
+main {
+    padding: 2rem;
+}
+
+main h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #4a148c;
+}
+
+/* Grid for cards */
+.temple-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Temple Card */
+.temple-card {
+    background: #f3f3f3;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.temple-card:hover {
+    transform: translateY(-5px);
+}
+
+.temple-card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.temple-card p {
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+    color: #555;
+}
+
+.temple-card p strong {
+    color: #4a148c;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.temple-card img {
+    margin-top: 1rem;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+    padding: 1rem;
+    text-align: center;
+    background: #4a148c;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.label {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+    margin-right: 0.5rem;
+}

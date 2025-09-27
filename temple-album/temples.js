@@ -15,3 +15,4 @@ menuButton.addEventListener('click', () => {
         menuButton.innerHTML = '✖'; // Close
     }
 });
+// Wind Chill Calculation

@@ -5,86 +5,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temple Album Site Plan</title>
-    <link rel="stylesheet" href="siteplan.css">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Merriweather:wght@700&display=swap"
-        rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="siteplan.css">
 </head>
 
 <body>
     <header>
         <h1>Temple Album Site Plan</h1>
-        <p>Emmanuel Effiong</p>
+        <p><strong>Project:</strong> Temple Album</p>
     </header>
 
     <main>
         <!-- Site Name -->
         <section>
-            <h2>LDS Temples</h2>
-            <p><strong>Temple Album</strong></p>
-            <p>This name represents a collection of Latter-day Saint temples around the world. The site will serve as a
-                reference and gallery.
-                Optional domain: <em>temple-album.org</em></p>
+            <h2>SacredGround.site</h2>
+            <p><strong>Temple Album</strong> — This name was chosen because the site focuses on presenting a collection
+                of temples with photos and details. It is clear, descriptive, and easy to remember.</p>
         </section>
 
         <!-- Site Purpose -->
         <section>
             <h2>Site Purpose</h2>
-            <p>The purpose of this site is to display information and images about temples built by the church of Jesus Christ of Latter-day Saints.
-                Visitors will be able to browse a collection of temples, learn their history, location, and size.
-                Filters will allow users to view temples by age, size, or other categories.</p>
+            <p>The purpose of this site is to provide visitors with a gallery of The church of Jesus Christ of Latter-day Saints
+                temples worldwide, including historical details, dedication dates, and building sizes. It helps users learn about both older and
+                newer temples and explore them visually.</p>
         </section>
 
         <!-- Scenarios -->
         <section>
             <h2>Scenarios</h2>
             <ul>
-                <li>Which temples were built before 1900?</li>
-                <li>What is the largest temple in square footage?</li>
-                <li>When was the Accra Ghana Temple dedicated?</li>
+                <li>Which temples were built before the year 1900?</li>
+                <li>What are the newest temples dedicated after 2000?</li>
+                <li>Which temples are the largest by square footage?</li>
             </ul>
         </section>
 
         <!-- Color Schema -->
         <section>
             <h2>Color Schema</h2>
-            <p>Main Colors:</p>
+            <p>Two primary colors will be used across the site:</p>
             <ul>
-                <li><span style="color:#1E3A8A;">#1E3A8A</span> – Used for headers, navigation, and accents.</li>
-                <li><span style="color:#F9FAFB;">#F9FAFB</span> – Used for background.</li>
-                <li><span style="color:#374151;">#374151</span> – Used for body text.</li>
+                <li><span class="color-swatch navy"></span> <strong>Navy Blue (#1E3A8A):</strong> Headings, navigation
+                    bar, and accents.</li>
+                <li><span class="color-swatch gray"></span> <strong>Light Gray (#F3F4F6):</strong> Page background, card
+                    backgrounds.</li>
             </ul>
         </section>
 
         <!-- Typography -->
         <section>
             <h2>Typography</h2>
-            <p>Fonts:</p>
+            <p>The site will use the <strong>Poppins</strong> font family:</p>
             <ul>
-                <li><strong>Merriweather</strong> – for headings.</li>
-                <li><strong>Open Sans</strong> – for body text.</li>
+                <li><strong>Headings:</strong> Poppins, weight 600 (bold)</li>
+                <li><strong>Body Text:</strong> Poppins, weight 400 (regular)</li>
             </ul>
         </section>
 
-        <!-- Wireframe -->
+        <!-- Wireframes -->
         <section>
-            <h2>Wireframe</h2>
-            <p>These are the wireframes for the Temple Album homepage layout.</p>
+            <h2>Wireframes</h2>
+            <p>Below are the planned layouts for mobile and desktop views of the Temple Album home page.</p>
             <figure>
-                <img src="image/mobilewireframe (1).png" alt="Mobile wireframe layout">
+                <img src="wireframe-mobile.png" alt="Wireframe for mobile layout" loading="lazy">
                 <figcaption>Mobile Wireframe</figcaption>
             </figure>
             <figure>
-                <img src="image/desktopwireframe.png" alt="Desktop wireframe layout">
+                <img src="wireframe-desktop.png" alt="Wireframe for desktop layout" loading="lazy">
                 <figcaption>Desktop Wireframe</figcaption>
             </figure>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 | Temple Album | Emmanuel Effiong</p>
+        <p>&copy; <span id="year"></span> Temple Album | Site Plan</p>
     </footer>
+
+    <script>
+        // Auto year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>

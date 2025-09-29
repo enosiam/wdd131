@@ -1,107 +1,74 @@
-/* siteplan.css */
-
-/* Global reset */
+/* Site Plan Styles */
 body {
-    font-family: 'Open Sans', Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F3F4F6;
+    color: #333;
     margin: 0;
-    padding: 0;
-    background-color: #F9FAFB;
-    /* light background */
-    color: #374151;
-    /* dark gray text */
+    padding: 20px;
 }
 
-/* Header */
 header {
-    background-color: #1E3A8A;
-    /* dark blue */
-    color: white;
     text-align: center;
+    background-color: #1E3A8A;
+    color: white;
     padding: 1.5rem;
+    border-radius: 8px;
 }
 
-header h1 {
-    margin: 0;
-    font-family: 'Merriweather', serif;
+h1,
+h2 {
+    color: #1E3A8A;
 }
 
-header p {
-    margin-top: 0.5rem;
-    font-style: italic;
-}
-
-/* Sections */
 main {
     max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 section {
     margin-bottom: 2rem;
 }
 
-h2 {
-    font-family: 'Merriweather', serif;
-    color: #1E3A8A;
-    margin-bottom: 0.5rem;
-}
-
-/* Lists */
 ul {
-    padding-left: 1.5rem;
+    list-style: disc;
+    margin-left: 20px;
 }
 
-li {
-    margin-bottom: 0.5rem;
+.color-swatch {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    border-radius: 4px;
+    vertical-align: middle;
 }
 
-/* Wireframe images */
+.color-swatch.navy {
+    background-color: #1E3A8A;
+}
+
+.color-swatch.gray {
+    background-color: #F3F4F6;
+    border: 1px solid #ccc;
+}
+
 figure {
-    margin: 1.5rem 0;
     text-align: center;
-}
-
-figure img {
-    max-width: 100%;
-    height: auto;
-    border: 2px solid #1E3A8A;
-    border-radius: 8px;
+    margin: 1.5rem 0;
 }
 
 figcaption {
     font-size: 0.9rem;
     color: #555;
-    margin-top: 0.5rem;
 }
 
-/* Footer */
 footer {
-    background-color: #1E3A8A;
-    color: white;
     text-align: center;
-    padding: 1rem;
     margin-top: 2rem;
-}
-
-figure {
-    margin: 1.25rem 0;
-    text-align: center;
-}
-
-figure img {
-    max-width: 100%;
-    height: auto;
-    border: 2px solid #1E3A8A;
-    border-radius: 8px;
-    background: #fff;
-    padding: 6px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-}
-
-figcaption {
-    margin-top: .5rem;
-    font-size: .95rem;
-    color: #555;
+    font-size: 0.9rem;
+    color: #666;
 }

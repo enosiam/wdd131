@@ -1,0 +1,107 @@
+/* siteplan.css */
+
+/* Global reset */
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #F9FAFB;
+    /* light background */
+    color: #374151;
+    /* dark gray text */
+}
+
+/* Header */
+header {
+    background-color: #1E3A8A;
+    /* dark blue */
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+header h1 {
+    margin: 0;
+    font-family: 'Merriweather', serif;
+}
+
+header p {
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Sections */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-family: 'Merriweather', serif;
+    color: #1E3A8A;
+    margin-bottom: 0.5rem;
+}
+
+/* Lists */
+ul {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Wireframe images */
+figure {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+figure img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #1E3A8A;
+    border-radius: 8px;
+}
+
+figcaption {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background-color: #1E3A8A;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+figure {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+figure img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #1E3A8A;
+    border-radius: 8px;
+    background: #fff;
+    padding: 6px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+figcaption {
+    margin-top: .5rem;
+    font-size: .95rem;
+    color: #555;
+}

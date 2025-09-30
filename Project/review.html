@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Review Confirmation</title>
+    <link rel="stylesheet" href="review.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>JDARA FRAGRANCE</h1>
+        <h2>Thank you for your review</h2>
+    </header>
+
+    <main>
+        <section class="confirmation">
+            <p id="confirmIntro">We received your review. Here is a summary:</p>
+
+            <dl id="summaryList">
+                <!-- populated by JS -->
+            </dl>
+
+            <p><strong>Total reviews submitted from this browser:</strong> <span id="reviewCount">0</span></p>
+
+            <p><a href="form.html">Submit another review</a></p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="2025"></span> — Emmanuel Effiong</p>
+    </footer>
+
+    <script src="review.js" defer></script>
+    <script>
+        document.getElementById('2025').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

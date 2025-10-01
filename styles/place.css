@@ -48,7 +48,7 @@ body {
     color: #ffd700;
 }
 
-/* ✅ Hamburger (hidden on desktop) */
+/* Hamburger */
 .hamburger {
     display: none;
     background: none;
@@ -58,7 +58,7 @@ body {
     cursor: pointer;
 }
 
-/* ✅ Mobile menu */
+/* Mobile menu */
 @media (max-width: 768px) {
     .main-nav ul {
         display: none;
@@ -185,15 +185,17 @@ body {
 }
 
 .mobile-icon {
-    display: inline-block;
+    display: block;
     margin-bottom: 1rem;
 }
 
+/* Hide SVG in desktop view */
 @media (min-width: 768px) {
     .mobile-icon {
-        display: none;
+        display: none !important;
     }
 
+    /* ✅ Desktop-only pseudo-element */
     .weather h2::after {
         content: " ☁️";
         font-size: 1.2rem;

@@ -64,7 +64,7 @@ const temples = [
         location: "Laie, Hawaii, USA",
         dedicated: "November 27, 1919",
         area: 42000,
-        imageUrl: "image/laie.jpg"
+        imageUrl: "image/Laie.jpg"
     }
 ];
 

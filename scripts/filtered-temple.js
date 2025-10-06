@@ -29,49 +29,49 @@ const temples = [
         location: "Salt Lake City, Utah, USA",
         dedicated: "April 6, 1893",
         area: 253015,
-        imageUrl: "images/temple3.jpg"
+        imageUrl: "image/temple3.jpg"
     },
     {
         templeName: "Nauvoo Illinois Temple",
         location: "Nauvoo, Illinois, USA",
         dedicated: "June 27, 2002",
         area: 54000,
-        imageUrl: "images/nauvoo.jpeg"
+        imageUrl: "image/nauvoo.jpeg"
     },
     {
         templeName: "Accra Ghana Temple",
         location: "Accra, Ghana",
         dedicated: "January 11, 2004",
         area: 17500,
-        imageUrl: "images/accra.jpeg"
+        imageUrl: "image/accra.jpeg"
     },
     {
         templeName: "Aba Nigeria Temple",
         location: "Aba, Nigeria",
         dedicated: "August 7, 2005",
         area: 11500,
-        imageUrl: "images/aba.webp"
+        imageUrl: "image/aba.webp"
     },
     {
         templeName: "Rome Italy Temple",
         location: "Rome, Italy",
         dedicated: "March 10, 2019",
         area: 41010,
-        imageUrl: "images/rome.jpeg"
+        imageUrl: "image/rome.jpeg"
     },
     {
         templeName: "Laie Hawaii Temple",
         location: "Laie, Hawaii, USA",
         dedicated: "November 27, 1919",
         area: 42000,
-        imageUrl: "images/Laie.jpg"
+        imageUrl: "image/Laie.jpg"
     },
     {
         templeName: "Papeete Tahiti Temple",
         location: "Papeete, Tahiti",
         dedicated: "October 27, 1983",
         area: 12877,
-        imageUrl: "images/papeete.jpeg"
+        imageUrl: "image/papeete.jpeg"
     },
     {
         templeName: "Manhattan New York Temple",

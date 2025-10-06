@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Submit your product review for JDERA Fragrance. Share your rating, experience, and feedback to help improve our products.">
   <title>Product Review Form</title>
-
   <link rel="stylesheet" href="styles/form.css">
 </head>
+
 <body>
   <header class="site-header">
     <h1>JDERA FRAGRANCE</h1>
@@ -21,44 +24,23 @@
         <label for="productSelect">Product Name <span aria-hidden="true" class="required">*</span></label>
         <select id="productSelect" name="productId" required>
           <option value="" disabled selected>Select a Product ...</option>
-          <!-- options inserted by JS -->
         </select>
       </div>
 
-      <!-- Overall Rating (1-5) -->
+      <!-- Overall Rating -->
       <fieldset class="form-row" aria-labelledby="ratingLegend">
         <legend id="ratingLegend">Overall Rating <span class="required" aria-hidden="true">*</span></legend>
         <div class="rating-group" role="radiogroup" aria-required="true" aria-labelledby="ratingLegend">
-          <!-- Each radio has same name so only one can be chosen -->
-          <label class="star">
-            <input type="radio" id="rate-5" name="rating" value="5" required>
-            <span aria-hidden="true">★★★★★</span>
-            <span class="sr-only">5 stars</span>
-          </label>
-
-          <label class="star">
-            <input type="radio" id="rate-4" name="rating" value="4" required>
-            <span aria-hidden="true">★★★★</span>
-            <span class="sr-only">4 stars</span>
-          </label>
-
-          <label class="star">
-            <input type="radio" id="rate-3" name="rating" value="3" required>
-            <span aria-hidden="true">★★★</span>
-            <span class="sr-only">3 stars</span>
-          </label>
-
-          <label class="star">
-            <input type="radio" id="rate-2" name="rating" value="2" required>
-            <span aria-hidden="true">★★</span>
-            <span class="sr-only">2 stars</span>
-          </label>
-
-          <label class="star">
-            <input type="radio" id="rate-1" name="rating" value="1" required>
-            <span aria-hidden="true">★</span>
-            <span class="sr-only">1 star</span>
-          </label>
+          <label class="star"><input type="radio" id="rate-5" name="rating" value="5" required><span
+              aria-hidden="true">★★★★★</span><span class="sr-only">5 stars</span></label>
+          <label class="star"><input type="radio" id="rate-4" name="rating" value="4" required><span
+              aria-hidden="true">★★★★</span><span class="sr-only">4 stars</span></label>
+          <label class="star"><input type="radio" id="rate-3" name="rating" value="3" required><span
+              aria-hidden="true">★★★</span><span class="sr-only">3 stars</span></label>
+          <label class="star"><input type="radio" id="rate-2" name="rating" value="2" required><span
+              aria-hidden="true">★★</span><span class="sr-only">2 stars</span></label>
+          <label class="star"><input type="radio" id="rate-1" name="rating" value="1" required><span
+              aria-hidden="true">★</span><span class="sr-only">1 star</span></label>
         </div>
       </fieldset>
 
@@ -68,29 +50,14 @@
         <input type="date" id="installDate" name="installDate" required>
       </div>
 
-      <!-- Useful Features (checkboxes, check all that apply) -->
+      <!-- Features -->
       <fieldset class="form-row" aria-labelledby="featuresLegend">
         <legend id="featuresLegend">Useful Features (select all that apply)</legend>
-
-        <label class="checkbox">
-          <input type="checkbox" id="feat-ease" name="features" value="Ease of Use">
-          Ease of Use
-        </label>
-
-        <label class="checkbox">
-          <input type="checkbox" id="feat-performance" name="features" value="Performance">
-          Performance
-        </label>
-
-        <label class="checkbox">
-          <input type="checkbox" id="feat-support" name="features" value="Customer Support">
-          Customer Support
-        </label>
-
-        <label class="checkbox">
-          <input type="checkbox" id="feat-value" name="features" value="Value for Money">
-          Value for Money
-        </label>
+        <label><input type="checkbox" id="feat-ease" name="features" value="Ease of Use"> Ease of Use</label>
+        <label><input type="checkbox" id="feat-performance" name="features" value="Performance"> Performance</label>
+        <label><input type="checkbox" id="feat-support" name="features" value="Customer Support"> Customer
+          Support</label>
+        <label><input type="checkbox" id="feat-value" name="features" value="Value for Money"> Value for Money</label>
       </fieldset>
 
       <!-- Written Review -->
@@ -113,12 +80,13 @@
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="2025"></span> — Emmanuel Effiong</p>
+    <p>&copy; <span id="year"></span> — Emmanuel Effiong</p>
   </footer>
 
   <script src="scripts/form.js" defer></script>
   <script>
-    document.getElementById('2025').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
+
 </html>

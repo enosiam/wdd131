@@ -3,52 +3,45 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="References for Temple Album images and content.">
   <title>References | Temple Album</title>
-  <link rel="stylesheet" href="styles/base.css" />
-  <link rel="stylesheet" href="styles/main.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/site.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <img src="images/logo.jpg" alt="Temple Album logo" class="logo" />
-      <div>
-        <h1>SacredGround.site</h1>
-        <p class="site-tag">References & credits</p>
-      </div>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/logo.jpg" alt="SacredGround logo" class="logo">
+        <span class="brand-text">SacredGround<span class="brand-dot">.site</span></span>
+      </a>
+      <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+        <button class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle menu">☰</button>
+        <ul id="navMenu" class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="references.html" class="nav-link active">References</a></li>
+        </ul>
+      </nav>
     </div>
-
-    <nav aria-label="Primary navigation">
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="references.html" class="active">References</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <main class="container" id="main">
-    <article>
-      <h2>Content & image credits</h2>
-      <p>The images used on this site were referenced from the following sources (please replace these example entries with the actual URLs and credits you used):</p>
-      <ol>
-        <li>Salt Lake Temple photo — Photographer Name. Source: example.com/salt-lake (CC BY 4.0)</li>
-        <li>Lagos Nigeria Temple photo — Photographer Name. Source: example.com/lagos (CC BY 4.0)</li>
-        <li>Manila Temple photo — Photographer Name. Source: example.com/manila (CC BY 4.0)</li>
-      </ol>
-
-      <h3>Other references</h3>
-      <ul>
-        <li>Template and accessibility guidelines — W3C HTML Accessibility</li>
-        <li>Course rubric & assignment prompt — your course site</li>
-      </ul>
-    </article>
+  <main class="container">
+    <h1>References</h1>
+    <p>Replace the example entries below with exact image/credit URLs you used for the project.</p>
+    <ul>
+      <li>Salt Lake Temple – image: Church Media (example) — https://www.churchofjesuschrist.org</li>
+      <li>Accra Ghana Temple – image: Church Gallery (example) — https://www.churchofjesuschrist.org/temples</li>
+      <li>Lagos Temple – image: Newsroom (example)</li>
+    </ul>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Emmanuel Effiong | Temple Album</p>
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Emmanuel Effiong | Temple Album</p>
+    </div>
   </footer>
-
-  <script src="scripts/main.js" defer></script>
 </body>
 </html>

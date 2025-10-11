@@ -1,247 +1,258 @@
 /* scripts/main.js
-   - Implements: multiple functions, DOM selection & modification, event listening,
-     conditional branching, objects/arrays/array methods, template literals ONLY for outputs,
-     localStorage, lazy loading fallback (IntersectionObserver).
+   - Multiple functions
+   - DOM selection & modification
+   - Event listening
+   - Conditional branching
+   - Objects, arrays, array methods
+   - Template literals exclusively for output strings
+   - localStorage for favorites & contact messages
+   - Lazy loading with IntersectionObserver
 */
 
-// ---- Utilities & Data ----
+(() => {
+  // ---- Data: temple objects (edit image filenames in /images/) ----
+  const temples = [
+    { id: 'saltlake', name: 'Salt Lake Temple', location: 'Salt Lake City, USA', year: 1893, sqft: 253000, img: 'images/salt-lake.jpg', desc: 'Historic centerpiece of Salt Lake City.' },
+    { id: 'accra', name: 'Accra Ghana Temple', location: 'Accra, Ghana', year: 2004, sqft: 17500, img: 'images/accra.jpg', desc: 'Serving West Africa.' },
+    { id: 'lagos', name: 'Lagos Nigeria Temple', location: 'Lagos, Nigeria', year: 2005, sqft: 18000, img: 'images/lagos.jpg', desc: 'Modern temple in Nigeria.' },
+    { id: 'manila', name: 'Manila Philippines Temple', location: 'Manila, Philippines', year: 1984, sqft: 19000, img: 'images/manila.jpg', desc: 'Beautiful gardens and architecture.' },
+    { id: 'london', name: 'London England Temple', location: 'London, UK', year: 1958, sqft: 15000, img: 'images/london.jpg', desc: 'Historic temple for UK members.' }
+  ];
 
-// Auto update year (DOM)
-(function setYear(){
-  const yEl = document.getElementById('year');
-  if (yEl) yEl.textContent = `${new Date().getFullYear()}`;
-})();
+  // ---- localStorage keys & state ----
+  const LS_KEYS = { FAVS: 'tg_favs_v1', CONTACTS: 'tg_contacts_v1' };
+  let favorites = new Set(JSON.parse(localStorage.getItem(LS_KEYS.FAVS) || '[]'));
 
-// Data: array of temple objects (object + array use)
-const temples = [
-  { id: 'saltlake', name: 'Salt Lake Temple', year: 1893, location: 'Salt Lake City, USA', img: 'images/temples/salt-lake.jpg', description: 'Historic temple built over many years.' },
-  { id: 'accra', name: 'Accra Ghana Temple', year: 2004, location: 'Accra, Ghana', img: 'images/temples/accra.jpg', description: 'Serving West Africa.' },
-  { id: 'lagos', name: 'Lagos Nigeria Temple', year: 2022, location: 'Lagos, Nigeria', img: 'images/temples/lagos.jpg', description: 'A recent temple in Nigeria.' },
-  { id: 'manila', name: 'Manila Philippines Temple', year: 1984, location: 'Manila, Philippines', img: 'images/temples/manila.jpg', description: 'Beautiful gardens and architecture.' },
-  { id: 'london', name: 'London England Temple', year: 1958, location: 'London, UK', img: 'images/temples/london.jpg', description: 'A center for members in the UK.' }
-];
+  // ---- Helpers ----
+  const $ = (sel, ctx=document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
 
-// localStorage keys
-const LS_KEYS = {
-  favorites: 'templeAlbumFavorites',
-  lastFilter: 'templeAlbumLastFilter'
-};
+  // ---- Year auto-update for footer (used in pages) ----
+  function setYear() {
+    const el = $('#year');
+    if (el) el.textContent = new Date().getFullYear();
+  }
 
-// state
-let favorites = new Set(JSON.parse(localStorage.getItem(LS_KEYS.favorites) || '[]'));
-
-// ---- Rendering functions ----
-
-// Render gallery (DOM manipulation + template literals)
-function renderGallery(list = temples){
-  const gallery = document.getElementById('gallery');
-  if (!gallery) return;
-
-  // Build cards using template literals (used exclusively for string output)
-  const html = list.map(t => {
-    const isFav = favorites.has(t.id);
-    return `
+  // ---- Render gallery (template literals ONLY for output) ----
+  function renderGallery(list) {
+    const grid = $('#galleryGrid');
+    if (!grid) return;
+    const html = list.map(t => `
       <article class="card" data-id="${t.id}">
-        <figure>
-          <img data-src="${t.img}" alt="${t.name} — ${t.location}" loading="lazy" />
-        </figure>
+        <div class="card-figure">
+          <img data-src="${t.img}" alt="${t.name} photo" loading="lazy">
+        </div>
         <div class="card-body">
-          <h3>${t.name}</h3>
-          <p>${t.location} • ${t.year}</p>
-          <p>${t.description}</p>
+          <h3 class="card-title">${t.name}</h3>
+          <div class="card-meta">${t.location} • ${t.year}</div>
+          <p>${t.desc}</p>
           <div class="card-actions">
-            <button class="btn" data-action="details" data-id="${t.id}">Details</button>
-            <button class="btn-outline" data-action="fav" data-id="${t.id}">${isFav ? '★ Saved' : '☆ Save'}</button>
+            <button class="fav-btn ${favorites.has(t.id) ? 'saved' : ''}" data-id="${t.id}" aria-pressed="${favorites.has(t.id) ? 'true' : 'false'}">
+              ${favorites.has(t.id) ? '★ Favorite' : '☆ Add Favorite'}
+            </button>
+            <div class="card-size">${t.sqft.toLocaleString()} sq ft</div>
           </div>
         </div>
       </article>
-    `;
-  }).join('');
-
-  gallery.innerHTML = html;
-  updateFavCount();
-  initLazyImages(); // start lazy loading behavior
-}
-
-// ---- Filtering & Sorting logic ----
-
-function applyFilters(){
-  const yearSelect = document.getElementById('yearSelect');
-  const sortSelect = document.getElementById('sortSelect');
-  const searchInput = document.getElementById('searchInput');
-  if (!yearSelect || !sortSelect || !searchInput) return;
-
-  const year = yearSelect.value;
-  const sort = sortSelect.value;
-  const q = (searchInput.value || '').trim().toLowerCase();
-
-  // conditional branching for filter ranges
-  let result = temples.filter(t => {
-    if (year === 'before1900') return t.year < 1900;
-    if (year === '1900to2000') return t.year >= 1900 && t.year < 2000;
-    if (year === 'after2000') return t.year >= 2000;
-    return true; // 'all'
-  });
-
-  // search by name (array method)
-  if (q) {
-    result = result.filter(t => t.name.toLowerCase().includes(q));
+    `).join('');
+    grid.innerHTML = html;
+    initLazyLoad();        // lazy-load images
+    attachCardListeners(); // attach fav listeners
+    setResultCount(list.length);
   }
 
-  // sort (array methods)
-  if (sort === 'nameAsc') result.sort((a,b) => a.name.localeCompare(b.name));
-  if (sort === 'yearAsc') result.sort((a,b) => a.year - b.year);
-  if (sort === 'yearDesc') result.sort((a,b) => b.year - a.year);
-
-  // save filter choice
-  localStorage.setItem(LS_KEYS.lastFilter, JSON.stringify({ year, sort, q }));
-
-  renderGallery(result);
-}
-
-// ---- Favorites (object id usage + localStorage) ----
-
-function toggleFavorite(id){
-  if (favorites.has(id)) favorites.delete(id);
-  else favorites.add(id);
-  localStorage.setItem(LS_KEYS.favorites, JSON.stringify(Array.from(favorites)));
-  // Re-render cards to update button text
-  applyFilters();
-}
-
-function updateFavCount(){
-  const el = document.getElementById('favCount');
-  if (el) el.textContent = `${favorites.size}`;
-}
-
-// Show only favorites
-function showFavorites(){
-  const favArray = temples.filter(t => favorites.has(t.id));
-  renderGallery(favArray);
-}
-
-// ---- Details (example of event delegation and DOM updates) ----
-
-function showDetails(id){
-  const temple = temples.find(t => t.id === id);
-  if (!temple) return;
-  // For demo we'll use alert — a modal could be built (keeps code short & accessible)
-  alert(`${temple.name}\n${temple.location}\nDedicated: ${temple.year}\n\n${temple.description}`);
-}
-
-// ---- Contact form handling (validations + DOM feedback) ----
-
-function handleContactForm(){
-  const form = document.getElementById('contactForm');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const status = document.getElementById('formStatus');
-    const formData = new FormData(form);
-    const name = (formData.get('name') || '').toString().trim();
-
-    // simple validation (already many HTML validations present)
-    if (!name) {
-      status.textContent = 'Please provide your name.';
-      return;
+  // ---- Lazy loading: IntersectionObserver fallback ----
+  function initLazyLoad() {
+    const imgs = $$('img[data-src]');
+    if (!imgs.length) return;
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            obs.unobserve(img);
+          }
+        });
+      }, { rootMargin: '200px' });
+      imgs.forEach(img => io.observe(img));
+    } else {
+      imgs.forEach(img => { img.src = img.dataset.src; img.removeAttribute('data-src'); });
     }
+  }
 
-    // mimic sending: store last message in localStorage (as a project requirement to use localStorage)
-    const savedMessages = JSON.parse(localStorage.getItem('templeAlbumMessages') || '[]');
-    savedMessages.push({ name, email: formData.get('email'), message: formData.get('message'), date: new Date().toISOString() });
-    localStorage.setItem('templeAlbumMessages', JSON.stringify(savedMessages));
-
-    // provide friendly UI feedback using template literal
-    status.textContent = `Thanks, ${name}! Your message has been recorded.`;
-    form.reset();
-  });
-}
-
-// ---- Lazy load fallback: IntersectionObserver loads data-src into src ----
-
-function initLazyImages(){
-  const imgs = document.querySelectorAll('img[data-src]');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-          observer.unobserve(img);
+  // ---- Attach card-level listeners (favorites + keyboard support) ----
+  function attachCardListeners() {
+    const grid = $('#galleryGrid');
+    if (!grid) return;
+    // favorite buttons
+    $$('.fav-btn', grid).forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleFavorite(btn.dataset.id);
+      });
+    });
+    // keyboard Enter to toggle favorite when card focused
+    $$('.card', grid).forEach(card => {
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const id = card.getAttribute('data-id');
+          toggleFavorite(id);
         }
       });
-    }, { rootMargin: '200px' });
-
-    imgs.forEach(img => {
-      // If browser supports native lazy, set src if it's in cache or small; otherwise rely on IO
-      if (!img.loading || img.loading !== 'lazy') {
-        io.observe(img);
-      } else {
-        // browser supports native lazy; set data-src to src so native lazy can use it
-        img.src = img.dataset.src;
-        img.removeAttribute('data-src');
-      }
-    });
-  } else {
-    // fallback: load all immediately
-    imgs.forEach(img => {
-      img.src = img.dataset.src;
-      img.removeAttribute('data-src');
     });
   }
-}
 
-// ---- Event delegation for gallery buttons ----
+  // ---- Toggle favorite (update state & localStorage) ----
+  function toggleFavorite(id) {
+    if (favorites.has(id)) favorites.delete(id);
+    else favorites.add(id);
+    localStorage.setItem(LS_KEYS.FAVS, JSON.stringify(Array.from(favorites)));
+    // re-render using current filters
+    applyCurrentFilter();
+  }
 
-function attachGalleryListener(){
-  const gallery = document.getElementById('gallery');
-  if (!gallery) return;
+  // ---- Filter logic (conditional branching) ----
+  let currentFilter = { type: 'all', q: '' };
+  function applyFilter(filter) {
+    currentFilter.type = filter;
+    currentFilter.q = currentFilter.q || '';
+    applyCurrentFilter();
+  }
+  function applySearch(q) {
+    currentFilter.q = q.trim().toLowerCase();
+    applyCurrentFilter();
+  }
+  function applyCurrentFilter() {
+    let out = temples.slice(); // copy
+    // Filter by type
+    if (currentFilter.type === 'before1900') out = out.filter(t => t.year < 1900);
+    else if (currentFilter.type === 'before1950') out = out.filter(t => t.year < 1950);
+    else if (currentFilter.type === 'after2000') out = out.filter(t => t.year >= 2000);
+    else if (currentFilter.type === 'largest') out = out.slice().sort((a,b)=>b.sqft - a.sqft).slice(0,3);
+    else if (currentFilter.type === 'favorites') out = out.filter(t => favorites.has(t.id));
 
-  gallery.addEventListener('click', (e) => {
-    const btn = e.target.closest('button');
+    // Search by name
+    if (currentFilter.q) out = out.filter(t => t.name.toLowerCase().includes(currentFilter.q));
+
+    renderGallery(out);
+  }
+
+  // ---- Show result count ----
+  function setResultCount(n) {
+    const el = $('#resultCount');
+    if (el) el.textContent = `${n} temple${n===1 ? '' : 's'} shown`;
+  }
+
+  // ---- Show favorites toggle ----
+  function toggleShowFavorites() {
+    const btn = $('#showFavs');
     if (!btn) return;
-    const action = btn.dataset.action;
-    const id = btn.dataset.id;
-    if (action === 'fav') toggleFavorite(id);
-    else if (action === 'details') showDetails(id);
-  });
-}
-
-// ---- Restore last state from localStorage ----
-
-function restoreLastState(){
-  const last = JSON.parse(localStorage.getItem(LS_KEYS.lastFilter) || 'null');
-  if (last) {
-    const yearSelect = document.getElementById('yearSelect');
-    const sortSelect = document.getElementById('sortSelect');
-    const searchInput = document.getElementById('searchInput');
-    if (yearSelect) yearSelect.value = last.year || 'all';
-    if (sortSelect) sortSelect.value = last.sort || 'nameAsc';
-    if (searchInput) searchInput.value = last.q || '';
+    if (currentFilter.type === 'favorites') {
+      applyFilter('all');
+      btn.textContent = 'Show Favorites';
+    } else {
+      applyFilter('favorites');
+      btn.textContent = 'Show All';
+    }
   }
-}
 
-// ---- Wiring up UI events ----
+  // ---- Navigation toggle (mobile) ----
+  function initNavToggle() {
+    const toggle = $('.nav-toggle');
+    const menu = $('#navMenu');
+    if (!toggle || !menu) return;
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !open);
+      menu.style.display = open ? '' : 'flex';
+    });
+  }
 
-document.addEventListener('DOMContentLoaded', () => {
-  // initial render
-  restoreLastState();
-  renderGallery(temples);
-  attachGalleryListener();
-  handleContactForm();
+  // ---- Search handling ----
+  function initSearch() {
+    const input = $('#searchInput');
+    const btn = $('#searchBtn');
+    if (!input || !btn) return;
+    btn.addEventListener('click', () => applySearch(input.value));
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') applySearch(input.value); });
+  }
 
-  // controls
-  document.getElementById('filterBtn')?.addEventListener('click', applyFilters);
-  document.getElementById('show-favorites')?.addEventListener('click', showFavorites);
-  document.getElementById('favCount') && updateFavCount();
+  // ---- Favorite button (Show favorites) ----
+  function initShowFavs() {
+    const btn = $('#showFavs');
+    if (!btn) return;
+    btn.addEventListener('click', toggleShowFavorites);
+  }
 
-  // keyboard accessible filter: enter key on search applies filter
-  document.getElementById('searchInput')?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') applyFilters();
+  // ---- Attach control buttons (filter group) ----
+  function initFilterControls() {
+    $$('.control-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // update UI pressed state
+        $$('.control-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+        btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
+
+        const filter = btn.getAttribute('data-filter');
+        applyFilter(filter || 'all');
+      });
+    });
+  }
+
+  // ---- Contact form handling (validation + localStorage store) ----
+  function initContactForm() {
+    const form = $('#contactForm');
+    if (!form) return;
+    const feedback = $('#formFeedback');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (form.fullname.value || '').trim();
+      const email = (form.email.value || '').trim();
+      const message = (form.message.value || '').trim();
+
+      if (!name || !email || !message) {
+        feedback.textContent = 'Please complete all required fields.';
+        feedback.style.color = 'crimson';
+        return;
+      }
+
+      // Save message to localStorage array (demo)
+      const arr = JSON.parse(localStorage.getItem(LS_KEYS.CONTACTS) || '[]');
+      arr.push({ name, email, message, date: new Date().toISOString() });
+      localStorage.setItem(LS_KEYS.CONTACTS, JSON.stringify(arr));
+      feedback.textContent = `Thanks, ${name}! Your message is recorded.`;
+      feedback.style.color = 'green';
+      form.reset();
+    });
+  }
+
+  // ---- Attach favorite toggle listeners after render (used above) ----
+  // (function defined earlier: attachCardListeners)
+
+  // ---- Initialization on DOMContentLoaded ----
+  document.addEventListener('DOMContentLoaded', () => {
+    setYear();
+    initNavToggle();
+    initFilterControls();
+    initSearch();
+    initShowFavs();
+    initContactForm();
+
+    // render initial gallery
+    renderGallery(temples);
+
+    // wire up special filter buttons (in case some buttons have custom data-filter)
+    const before1900Btn = document.querySelector('.control-btn[data-filter="before1900"]');
+    // (nothing else required; control buttons already wired)
   });
 
-  // restore favorites set from storage (already loaded above)
-  updateFavCount();
-});
+  // ---- Expose small helpers for debugging (optional) ----
+  window.templeAlbum = {
+    getFavorites: () => Array.from(favorites),
+    getTemples: () => temples.slice(),
+    applyFilter
+  };
+})();
+

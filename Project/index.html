@@ -3,78 +3,65 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Temple Album presents temples of The Church of Jesus Christ of Latter-day Saints worldwide with photos, dedication dates, and details." />
+  <meta name="description" content="Temple Album — explore temples with photos, dedication dates, and filters.">
   <title>Temple Album | SacredGround.site</title>
-  <link rel="stylesheet" href="styles/base.css" />
-  <link rel="stylesheet" href="styles/main.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/site.css">
+  <script src="scripts/main.js" defer></script>
 </head>
 <body>
   <header class="site-header" role="banner">
-    <div class="header-inner">
-      <img src="images/logo.jpg" alt="Temple Album logo" class="logo" />
-      <div>
-        <h1 class="site-title">SacredGround.site</h1>
-        <p class="site-tag">A Temple Album For The Church Of Jesus Christ Of Latter-day Saints</p>
-      </div>
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/logo.jpg" alt="SacredGround logo" class="logo">
+        <span class="brand-text">SacredGround<span class="brand-dot">.site</span></span>
+      </a>
+      <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+        <button class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle menu">☰</button>
+        <ul id="navMenu" class="nav-list">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="references.html" class="nav-link">References</a></li>
+        </ul>
+      </nav>
     </div>
-
-    <nav aria-label="Primary navigation">
-      <ul class="nav-list">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="references.html">References</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <main id="main" class="container" role="main">
+  <main class="container main-hero" id="main">
     <section class="hero" aria-labelledby="hero-heading">
-      <h2 id="hero-heading">Explore Temples Around the World</h2>
-      <p class="lead">Discover temples by dedication year, save favorites, and learn more about their history.</p>
-      <div class="hero-actions">
-        <a href="#gallery" class="btn">Open Gallery</a>
-        <button id="show-favorites" class="btn-outline">View Favorites (<span id="favCount">0</span>)</button>
+      <h1 id="hero-heading">Temple Album</h1>
+      <p class="lead">A modern, visual collection of temples — explore history, dedication dates, and architecture.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="gallery.html">Explore Gallery</a>
+        <a class="btn btn-outline" href="contact.html">Give Feedback</a>
       </div>
     </section>
 
-    <section id="controls" class="controls" aria-label="Filters">
-      <label for="yearSelect">Filter by year:</label>
-      <select id="yearSelect" name="yearSelect" aria-controls="gallery">
-        <option value="all">All</option>
-        <option value="before1900">Before 1900</option>
-        <option value="1900to2000">1900–1999</option>
-        <option value="after2000">2000 and after</option>
-      </select>
-
-      <label for="sizeSelect">Sort:</label>
-      <select id="sortSelect">
-        <option value="nameAsc">Name (A → Z)</option>
-        <option value="yearAsc">Year (oldest)</option>
-        <option value="yearDesc">Year (newest)</option>
-      </select>
-
-      <input id="searchInput" type="search" placeholder="Search temples..." aria-label="Search temples by name" />
-      <button id="filterBtn" class="btn">Apply</button>
-    </section>
-
-    <section id="gallery" class="gallery" aria-live="polite" aria-label="Temple gallery">
-      <!-- Gallery cards are rendered by scripts/main.js -->
-    </section>
-
-    <section id="info" class="info">
-      <h3>Why this site</h3>
-      <p>This project showcases a curated collection of temple images and brief data for educational purposes. See the references page for image sources and credits.</p>
+    <section class="features" aria-labelledby="features-heading">
+      <h2 id="features-heading" class="visually-hidden">Site features</h2>
+      <div class="feature-cards">
+        <article class="feature">
+          <h3>Filterable Gallery</h3>
+          <p>Find temples by era or size—fast filtering powered by JavaScript.</p>
+        </article>
+        <article class="feature">
+          <h3>Favorites</h3>
+          <p>Save favorites locally using your browser.</p>
+        </article>
+        <article class="feature">
+          <h3>Accessible & Responsive</h3>
+          <p>Designed with accessibility and mobile-first responsiveness in mind.</p>
+        </article>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
-    <p>&copy; <span id="year"></span> Emmanuel Effiong | Temple Album • <a href="references.html">References</a></p>
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Emmanuel Effiong | Temple Album • <a href="references.html">References</a></p>
+    </div>
   </footer>
-
-  <script src="scripts/main.js" defer></script>
 </body>
 </html>
-
-

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Temple Album Gallery — filter temples by era and size.">
+  <title>Gallery | Temple Album</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/site.css">
+  <script src="scripts/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/logo.jpg" alt="SacredGround logo" class="logo">
+        <span class="brand-text">SacredGround<span class="brand-dot">.site</span></span>
+      </a>
+      <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+        <button class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle menu">☰</button>
+        <ul id="navMenu" class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="references.html" class="nav-link">References</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+    <section class="controls" aria-label="Gallery controls">
+      <div class="controls-row">
+        <div class="filter-group" role="toolbar" aria-label="Filter temples">
+          <button class="control-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button class="control-btn" data-filter="before1900" aria-pressed="false">Before 1900</button>
+          <button class="control-btn" data-filter="after2000" aria-pressed="false">After 2000</button>
+          <button class="control-btn" data-filter="largest" aria-pressed="false">Largest</button>
+        </div>
+
+        <div class="search-group" role="search" aria-label="Search temples">
+          <input id="searchInput" type="search" placeholder="Search by name..." aria-label="Search temples by name">
+          <button id="searchBtn" class="control-btn">Search</button>
+        </div>
+      </div>
+      <div class="state-row">
+        <button id="showFavs" class="control-btn">Show Favorites</button>
+        <div id="resultCount" class="result-count" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading" class="visually-hidden">Temple Gallery</h2>
+      <div id="galleryGrid" class="gallery-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Emmanuel Effiong | Temple Album</p>
+    </div>
+  </footer>
+</body>
+</html>

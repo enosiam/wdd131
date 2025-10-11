@@ -12,11 +12,11 @@
 (() => {
   // ---- Data: temple objects (edit image filenames in /images/) ----
   const temples = [
-    { id: 'saltlake', name: 'Salt Lake Temple', location: 'Salt Lake City, USA', year: 1893, sqft: 253000, img: 'images/salt-lake.jpg', desc: 'Historic centerpiece of Salt Lake City.' },
-    { id: 'accra', name: 'Accra Ghana Temple', location: 'Accra, Ghana', year: 2004, sqft: 17500, img: 'images/accra.jpg', desc: 'Serving West Africa.' },
-    { id: 'lagos', name: 'Lagos Nigeria Temple', location: 'Lagos, Nigeria', year: 2005, sqft: 18000, img: 'images/lagos.jpg', desc: 'Modern temple in Nigeria.' },
+    { id: 'saltlake', name: 'Salt Lake Temple', location: 'Salt Lake City, USA', year: 1893, sqft: 253000, img: 'images/salt.jpg', desc: 'Historic centerpiece of Salt Lake City.' },
+    { id: 'accra', name: 'Accra Ghana Temple', location: 'Accra, Ghana', year: 2004, sqft: 17500, img: 'images/accra.jpeg', desc: 'Serving West Africa.' },
+    { id: 'lagos', name: 'Lagos Nigeria Temple', location: 'Lagos, Nigeria', year: 2005, sqft: 18000, img: 'images/aba.jpg', desc: 'Modern temple in Nigeria.' },
     { id: 'manila', name: 'Manila Philippines Temple', location: 'Manila, Philippines', year: 1984, sqft: 19000, img: 'images/manila.jpg', desc: 'Beautiful gardens and architecture.' },
-    { id: 'london', name: 'London England Temple', location: 'London, UK', year: 1958, sqft: 15000, img: 'images/london.jpg', desc: 'Historic temple for UK members.' }
+    { id: 'london', name: 'London England Temple', location: 'London, UK', year: 1958, sqft: 15000, img: 'images/hong.jpeg', desc: 'Historic temple for UK members.' }
   ];
 
   // ---- localStorage keys & state ----

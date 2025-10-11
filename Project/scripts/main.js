@@ -13,10 +13,10 @@
   // ---- Data: temple objects (edit image filenames in /images/) ----
   const temples = [
     { id: 'saltlake', name: 'Salt Lake Temple', location: 'Salt Lake City, USA', year: 1893, sqft: 253000, img: 'images/salt.jpg', desc: 'Historic centerpiece of Salt Lake City.' },
-    { id: 'manhattan', name: 'Manhattan Temple', location: 'New York City, USA', year: 2004, sqft: 20630, img: 'images/manhattan.jpg', desc: 'Serving West Africa.' },
-    { id: 'lagos', name: 'Lagos Nigeria Temple', location: 'Lagos, Nigeria', year: 2005, sqft: 18000, img: 'images/aba.jpg', desc: 'Modern temple in Nigeria.' },
+    { id: 'manhattan', name: 'Manhattan Temple', location: 'New York City, USA', year: 2004, sqft: 20630, img: 'images/manhattan.jpeg', desc: 'Serving United States East Coast.' },
+    { id: 'lagos', name: 'Laie, Hawaii, Temple', location: 'Laie, Hawaii, USA', year: 1919, sqft: 42000, img: 'images/Laie.jpg', desc: 'Modern temple in Hawaii.' },
     { id: 'manila', name: 'Manila Philippines Temple', location: 'Manila, Philippines', year: 1984, sqft: 19000, img: 'images/manila.jpg', desc: 'Beautiful gardens and architecture.' },
-    { id: 'london', name: 'London England Temple', location: 'London, UK', year: 1958, sqft: 15000, img: 'images/hong.jpeg', desc: 'Historic temple for UK members.' }
+    { id: 'london', name: 'Papeete, Tahiti Temple', location: 'Papeete, Tahiti', year: 1983, sqft: 12877, img: 'images/papeete.jpeg', desc: 'Papeete, Tahiti' }
   ];
 
   // ---- localStorage keys & state ----

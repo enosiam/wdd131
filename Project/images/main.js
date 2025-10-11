@@ -16,7 +16,8 @@
     { id: 'accra', name: 'Accra Ghana Temple', location: 'Accra, Ghana', year: 2004, sqft: 17500, img: 'images/accra.jpeg', desc: 'Serving West Africa.' },
     { id: 'lagos', name: 'Lagos Nigeria Temple', location: 'Lagos, Nigeria', year: 2005, sqft: 18000, img: 'images/aba.jpg', desc: 'Modern temple in Nigeria.' },
     { id: 'manila', name: 'Manila Philippines Temple', location: 'Manila, Philippines', year: 1984, sqft: 19000, img: 'images/manila.jpg', desc: 'Beautiful gardens and architecture.' },
-    { id: 'london', name: 'London England Temple', location: 'London, UK', year: 1958, sqft: 15000, img: 'images/hong.jpeg', desc: 'Historic temple for UK members.' }
+    { id: 'papeete', name: 'Papeete, Tahiti Temple', location: 'Papeete, Tahiti', year: 1983, sqft: 12877, img: 'images/papeete.jpeg', desc: 'Papeete, Tahiti' },
+    { id: 'nauvoo', name: 'Nauvoo Illinois Temple', location: 'Nauvoo, Illinois, USA', year: 2002, sqft: 54000, img: 'images/nauvoo.jpeg', desc: 'Nauvoo, Illinois' }
   ];
 
   // ---- localStorage keys & state ----

@@ -16,7 +16,7 @@
     { id: 'lagos', name: 'Lagos Nigeria Temple', location: 'Lagos, Nigeria', year: 2019, sqft: 40000, img: 'images2/lagos.jpg', desc: 'First temple in Nigeria.' },
     { id: 'laie', name: 'Laie, Hawaii, Temple', location: 'Laie, Hawaii, USA', year: 1919, sqft: 42000, img: 'images2/Laie.jpg', desc: 'Modern temple in Hawaii.' },
     { id: 'manila', name: 'Manila Philippines Temple', location: 'Manila, Philippines', year: 1984, sqft: 19000, img: 'images2/manila.jpg', desc: 'Beautiful gardens and architecture.' },
-    { id: 'papeete', name: 'Papeete, Tahiti Temple', location: 'Papeete, Tahiti', year: 1983, sqft: 12877, img: 'images2/papeete.jpeg', desc: 'Papeete, Tahiti' },
+    { id: 'colonia', name: 'Colonia, Uruguay Temple', location: 'Colonia, Uruguay', year: 2021, sqft: 12877, img: 'images2/colonia.jpeg', desc: 'Colonia, Uruguay' },
     { id: 'hongkong', name: 'Hong Kong China Temple', location: 'Hong Kong, China', year: 2016, sqft: 20000, img: 'images2/hong2.jpeg', desc: 'First temple in China.' }
   ];
 

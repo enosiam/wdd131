@@ -12,11 +12,12 @@
 (() => {
   // ---- Data: temple objects (edit image filenames in /images/) ----
   const temples = [
-    { id: 'saltlake', name: 'Salt Lake Temple', location: 'Salt Lake City, USA', year: 1893, sqft: 253000, img: 'images/salt.jpg', desc: 'Historic centerpiece of Salt Lake City.' },
+    { id: 'saltlake', name: 'Salt Lake Temple', location: 'Salt Lake City, USA', year: 1893, sqft: 253000, img: 'images/salt.webp', desc: 'Historic centerpiece of Salt Lake City.' },
     { id: 'manhattan', name: 'Manhattan Temple', location: 'New York City, USA', year: 2004, sqft: 20630, img: 'images/manhattan.jpeg', desc: 'Serving United States East Coast.' },
     { id: 'lagos', name: 'Laie, Hawaii, Temple', location: 'Laie, Hawaii, USA', year: 1919, sqft: 42000, img: 'images/Laie.jpg', desc: 'Modern temple in Hawaii.' },
     { id: 'manila', name: 'Manila Philippines Temple', location: 'Manila, Philippines', year: 1984, sqft: 19000, img: 'images/manila.jpg', desc: 'Beautiful gardens and architecture.' },
-    { id: 'london', name: 'Papeete, Tahiti Temple', location: 'Papeete, Tahiti', year: 1983, sqft: 12877, img: 'images/papeete.jpeg', desc: 'Papeete, Tahiti' }
+    { id: 'papeete', name: 'Papeete, Tahiti Temple', location: 'Papeete, Tahiti', year: 1983, sqft: 12877, img: 'images/papeete.jpeg', desc: 'Papeete, Tahiti' },
+    { id: 'nauvoo', name: 'Nauvoo Illinois Temple', location: 'Nauvoo, Illinois, USA', year: 2002, sqft: 54000, img: 'images/nauvoo.jpeg', desc: 'Nauvoo, Illinois' }
   ];
 
   // ---- localStorage keys & state ----
